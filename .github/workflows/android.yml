@@ -1,21 +1,45 @@
 name: Android CI
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
+    # 1. Check out the repository
     - uses: actions/checkout@v4
-    - name: set up JDK 17
+    
+    # 2. Set up JDK 17
+    - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
+    
+    # 3. Grant execute permission for gradlew
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    
+    # 4. Build the project with Gradle
     - name: Build with Gradle
       run: ./gradlew build
+
+    # 5. Upload APK to GitHub Releases (only if build is successful)
+    - name: Upload APK to GitHub Releases
+      if: success()
+      uses: softprops/action-gh-release@v1
+      with:
+        files: app/build/outputs/apk/release/app-release.apk
+    
+    # 6. Optional: Upload APK to artifacts (for debugging)
+    - name: Upload APK as artifact (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release.apk
+        path: app/build/outputs/apk/release/app-release.apk
