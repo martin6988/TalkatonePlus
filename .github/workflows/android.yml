@@ -17,6 +17,10 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '17'
+        java-package: jdk
+        distribution: 'adoptopenjdk'  # 指定 JDK 发行版
+        architecture: x64
+        check-latest: false
 
     - name: Set up Gradle
       uses: gradle/gradle-build-action@v2
