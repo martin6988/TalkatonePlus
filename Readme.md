@@ -6,7 +6,7 @@
 
 ## 依赖
 
-- [Xposed Framework](https://repo.xposed.info/) - 本项目依赖于 Xposed 框架。
+- Xposed Framework - 本项目依赖于 Xposed 框架。
 
 ## 说明
 
