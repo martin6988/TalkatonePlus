@@ -34,5 +34,5 @@ jobs:
     - name: Upload APK as artifact (optional)
       uses: actions/upload-artifact@v3
       with:
-        name: app-release.apk
-        path: app/build/outputs/apk/release/app-release.apk
+        name: app-debug.apk
+        path: app/build/outputs/apk/debug/app-debug.apk
