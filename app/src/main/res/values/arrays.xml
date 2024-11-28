@@ -1,0 +1,5 @@
+<resources>
+    <string-array name="xposedscope" >
+        <item>com.talkatone.android</item>
+    </string-array>
+</resources>
