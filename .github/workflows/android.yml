@@ -29,13 +29,6 @@ jobs:
     # 4. Build the project with Gradle
     - name: Build with Gradle
       run: ./gradlew build
-
-    # 5. Upload APK to GitHub Releases (only if build is successful)
-    - name: Upload APK to GitHub Releases
-      if: success()
-      uses: softprops/action-gh-release@v1
-      with:
-        files: app/build/outputs/apk/release/app-release.apk
     
     # 6. Optional: Upload APK to artifacts (for debugging)
     - name: Upload APK as artifact (optional)
